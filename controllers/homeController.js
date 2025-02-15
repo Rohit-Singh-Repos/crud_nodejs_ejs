@@ -13,7 +13,9 @@ const createController = async(req,res)=>{
         email:req.body.email,
         contact:req.body.contact,
     });
+    console.log(req.body)
     if(record){
+        
        await record.save();
        console.log("Data saved..")
 

@@ -1,16 +1,17 @@
 import  express from 'express';
-const app = express();
-const port = 4000;
 import route from './routes/routes.js';
 import path from 'path';
+import { APP_CONSTANT } from './connectDB/config.js';
 import connectDB from './connectDB/connectDB.js';
 import bodyParser from 'body-parser';
+const app = express();
+const PORT = APP_CONSTANT.port || 4000
 
 // connection for database
 connectDB()
 
 // body-parser
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // setup for static files
 app.use(express.static(path.join(process.cwd(), 'public')))
@@ -22,7 +23,7 @@ app.set('views', './views')
 // routes
 app.use('/', route);
 
-app.listen(port, ()=>{
-    console.log(`Server is running at http://localhost:${port}`)
+app.listen(PORT, ()=>{
+    console.log(`Server is running at ${PORT}`)
 })
 

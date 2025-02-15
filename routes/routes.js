@@ -10,6 +10,4 @@ route.get('/edit/:id', editController);
 route.post('/update/:id', updateController);
 route.get('/delete/:id', deleteController);
 
-
-
 export default route;
